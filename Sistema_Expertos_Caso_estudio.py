@@ -1,7 +1,6 @@
 from collections import deque
 import heapq
 
-# Definimos la estructura del problema
 tareas = [
     "Diseñar la interfaz de usuario",
     "Implementar la lógica de negocio",
@@ -29,14 +28,11 @@ recursos = [
     "Software de documentación Sphinx",
 ]
 
-# Restricciones
 MAX_RESPONSABLES = 2
 MAX_TAREAS_POR_PERSONA = 3
 
-# Estado inicial: sin asignaciones
 estado_inicial = {tarea: {"responsables": [], "recurso": None} for tarea in tareas}
 
-# Función para validar si un estado es válido
 def es_valido(estado):
     conteo_personas = {persona: 0 for persona in personas}
 
@@ -49,7 +45,6 @@ def es_valido(estado):
                 return False
     return True
 
-# Función heurística: número de tareas sin asignar completamente
 def heuristica(estado):
     return sum(1 for asignacion in estado.values() if not asignacion["responsables"] or not asignacion["recurso"])
 
@@ -89,7 +84,6 @@ def a_estrella():
 
     return None
 
-# Prueba del algoritmo
 solucion = a_estrella()
 
 if solucion:
